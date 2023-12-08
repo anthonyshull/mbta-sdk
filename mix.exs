@@ -3,7 +3,7 @@ defmodule MBTA.Mixfile do
 
   def project do
     [
-      app: :mbta,
+      app: :mbta_sdk,
       version: "3.0.0",
       elixir: "~> 1.10",
       build_embedded: Mix.env() == :prod,
