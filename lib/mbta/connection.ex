@@ -18,11 +18,10 @@ defmodule MBTA.Connection do
   """
 
   @default_base_url Application.compile_env(
-                      :mbta,
+                      :mbta_sdk,
                       :base_url,
                       "http://localhost:4000"
                     )
-
 
   @typedoc """
   The list of options that can be passed to new/1.
@@ -32,7 +31,7 @@ defmodule MBTA.Connection do
   """
   @type options :: [
           {:base_url, String.t()},
-          {:user_agent, String.t()},
+          {:user_agent, String.t()}
         ]
 
   @doc "Forward requests to Tesla."
@@ -70,9 +69,6 @@ defmodule MBTA.Connection do
     |> Tesla.client(adapter())
   end
 
-
-
-
   @doc """
   Returns fully configured middleware for passing to Tesla.client/2.
   """
@@ -82,7 +78,7 @@ defmodule MBTA.Connection do
       Keyword.get(
         options,
         :base_url,
-        Application.get_env(:mbta, :base_url, @default_base_url)
+        Application.get_env(:mbta_sdk, :base_url, @default_base_url)
       )
 
     tesla_options = Application.get_env(:tesla, __MODULE__, [])
@@ -100,8 +96,6 @@ defmodule MBTA.Connection do
         )
       )
 
-
-
     [
       {Tesla.Middleware.BaseUrl, base_url},
       {Tesla.Middleware.Headers, [{"user-agent", user_agent}]},
@@ -109,7 +103,6 @@ defmodule MBTA.Connection do
       | middleware
     ]
   end
-
 
   @doc """
   Returns the default adapter for this API.
