@@ -8,7 +8,7 @@ You can override the URL of your server (e.g. if you have a separate development
 configuration files).
 
 ```elixir
-config :mbta, base_url: "http://localhost:4000"
+config :mbta_sdk, base_url: "http://localhost:4000"
 ```
 
 Multiple clients for the same API with different URLs can be created passing different `base_url`s when calling
