@@ -4,16 +4,18 @@ SDK for the MBTA service API https://github.com/mbta/api.
 
 ## Configuration
 
-You can override the URL of your server (e.g. if you have a separate development and production server in your
-configuration files).
-
 ```elixir
-config :mbta_sdk, base_url: "http://localhost:4000"
+config :tesla, MBTA.Connection,
+  middleware: [
+    {Tesla.Middleware.BaseUrl, System.get_env("V3_API_URL")},
+    {Tesla.Middleware.Headers, [{"x-api-key", System.get_env("V3_API_KEY")}]}
+  ]
 ```
 
-Multiple clients for the same API with different URLs can be created passing different `base_url`s when calling
-`MBTA.Connection.new/1`:
+## Usage
 
 ```elixir
-client = MBTA.Connection.new(base_url: "http://localhost:4000")
+client = MBTA.Connection.new()
+
+south_station = MBTA.Api.Stop.api_web_stop_controller_show(client, "place-sstat")
 ```
