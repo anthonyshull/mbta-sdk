@@ -4,15 +4,17 @@ defmodule MBTA.Mixfile do
   def project do
     [
       app: :mbta_sdk,
-      version: "3.0.0",
+      version: "0.1.0",
       elixir: "~> 1.10",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       package: package(),
       description: """
-      MBTA service API. https://www.mbta.com Source code: https://github.com/mbta/api
+      SDK for the MBTA v3 API: https://api-v3.mbta.com/docs/swagger/index.html
       """,
-      deps: deps()
+      deps: deps(),
+      source_url: "https://github.com/anthonyshull/mbta-sdk",
+      license: "OSL-3.0"
     ]
   end
 
@@ -44,7 +46,7 @@ defmodule MBTA.Mixfile do
 
   defp package do
     [
-      name: "mbta",
+      name: "mbta_sdk",
       files: ~w(.formatter.exs config lib mix.exs README* LICENSE*)
     ]
   end

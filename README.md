@@ -1,6 +1,9 @@
 # MBTA SDK
 
-SDK for the MBTA service API https://github.com/mbta/api.
+SDK for the MBTA v3 API.
+
+API: https://api-v3.mbta.com/docs/swagger/index.html
+GITHUB: https://github.com/mbta/api.
 
 ## Configuration
 
