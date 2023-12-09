@@ -13,8 +13,7 @@ defmodule MBTA.Mixfile do
       SDK for the MBTA v3 API: https://api-v3.mbta.com/docs/swagger/index.html
       """,
       deps: deps(),
-      source_url: "https://github.com/anthonyshull/mbta-sdk",
-      license: "OSL-3.0"
+      source_url: "https://github.com/anthonyshull/mbta-sdk"
     ]
   end
 
@@ -47,7 +46,9 @@ defmodule MBTA.Mixfile do
   defp package do
     [
       name: "mbta_sdk",
-      files: ~w(.formatter.exs config lib mix.exs README* LICENSE*)
+      files: ~w(.formatter.exs lib mix.exs README*),
+      licenses: ["OSL-3.0"],
+      links: %{}
     ]
   end
 end
